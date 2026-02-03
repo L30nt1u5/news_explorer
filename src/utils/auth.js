@@ -1,20 +1,13 @@
-// auth.js - Simulated authentication responses
-
-// Simulate storing user data in localStorage
 const STORAGE_KEY = 'newsExplorerUser'
 const TOKEN_KEY = 'newsExplorerToken'
 
-// Generate a fake token
 const generateFakeToken = () => {
   return 'fake_token_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now()
 }
 
-// Simulate user registration
 export const authorize = (email, password, username) => {
   return new Promise((resolve, reject) => {
-    // Simulate network delay
     setTimeout(() => {
-      // Simulate basic validation
       if (!email || !password || !username) {
         reject({ message: 'Missing required fields' })
         return
@@ -25,7 +18,6 @@ export const authorize = (email, password, username) => {
         return
       }
 
-      // Generate fake token and user data
       const token = generateFakeToken()
       const user = {
         _id: 'user_' + Math.random().toString(36).substr(2, 9),
@@ -33,7 +25,6 @@ export const authorize = (email, password, username) => {
         username: username
       }
 
-      // Store in localStorage
       localStorage.setItem(TOKEN_KEY, token)
       localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
 
@@ -45,18 +36,14 @@ export const authorize = (email, password, username) => {
   })
 }
 
-// Simulate user login
 export const login = (email, password) => {
   return new Promise((resolve, reject) => {
-    // Simulate network delay
     setTimeout(() => {
-      // Simulate basic validation
       if (!email || !password) {
         reject({ message: 'Email and password are required' })
         return
       }
 
-      // Check if user exists (mock check)
       const existingUser = localStorage.getItem(STORAGE_KEY)
       if (!existingUser) {
         reject({ message: 'Invalid email or password' })
@@ -65,17 +52,13 @@ export const login = (email, password) => {
 
       const user = JSON.parse(existingUser)
 
-      // In a real app, we'd verify the password
-      // For now, just check if email matches
       if (user.email !== email) {
         reject({ message: 'Invalid email or password' })
         return
       }
 
-      // Generate fake token
       const token = generateFakeToken()
 
-      // Store token
       localStorage.setItem(TOKEN_KEY, token)
 
       resolve({
@@ -86,17 +69,14 @@ export const login = (email, password) => {
   })
 }
 
-// Simulate checking if token is valid
 export const checkToken = (token) => {
   return new Promise((resolve, reject) => {
-    // Simulate network delay
     setTimeout(() => {
       if (!token) {
         reject({ message: 'No token provided' })
         return
       }
 
-      // Get user from localStorage
       const userStr = localStorage.getItem(STORAGE_KEY)
 
       if (!userStr) {
@@ -113,10 +93,8 @@ export const checkToken = (token) => {
   })
 }
 
-// Simulate logout
 export const logout = () => {
   return new Promise((resolve) => {
-    // Simulate network delay
     setTimeout(() => {
       localStorage.removeItem(TOKEN_KEY)
       localStorage.removeItem(STORAGE_KEY)
@@ -125,12 +103,10 @@ export const logout = () => {
   })
 }
 
-// Get stored token
 export const getToken = () => {
   return localStorage.getItem(TOKEN_KEY)
 }
 
-// Check if user is authenticated
 export const isAuthenticated = () => {
   return !!localStorage.getItem(TOKEN_KEY)
 }

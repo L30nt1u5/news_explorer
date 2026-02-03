@@ -38,9 +38,10 @@ function RegisterModal({ isOpen, onClose, onSwitchToLogin }) {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      // Form is valid - will be handled in later stages
-      console.log('Register form submitted:', { email, password, username })
-      // onClose()
+      setEmail('')
+      setPassword('')
+      setUsername('')
+      setErrors({})
     }
   }
 

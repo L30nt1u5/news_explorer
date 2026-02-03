@@ -1,6 +1,3 @@
-// Mock data simulating News API response structure
-// Based on News API: https://newsapi.org/
-
 export const mockNewsArticles = [
   {
     id: '1',
@@ -121,14 +118,12 @@ export const mockSavedArticles = [
   }
 ]
 
-// Helper function to format date
 export const formatDate = (dateString) => {
   const date = new Date(dateString)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
   return date.toLocaleDateString('en-US', options)
 }
 
-// Helper function to get relative time
 export const getRelativeTime = (dateString) => {
   const date = new Date(dateString)
   const now = new Date()

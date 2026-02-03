@@ -28,7 +28,6 @@ function NewsCard({ article, isSaved = false, onSave, onDelete }) {
   const handleBookmarkClick = async (e) => {
     e.stopPropagation()
     
-    // If not logged in, show tooltip
     if (!isUserLoggedIn) {
       setShowTooltip(true)
       setTimeout(() => setShowTooltip(false), 2000)
@@ -36,7 +35,6 @@ function NewsCard({ article, isSaved = false, onSave, onDelete }) {
     }
     
     if (saved && isSaved) {
-      // Delete article
       setIsSaving(true)
       try {
         await deleteArticle(_id)
@@ -45,12 +43,10 @@ function NewsCard({ article, isSaved = false, onSave, onDelete }) {
           onDelete(article)
         }
       } catch (error) {
-        console.error('Failed to delete article:', error)
       } finally {
         setIsSaving(false)
       }
     } else if (!saved) {
-      // Save article
       setIsSaving(true)
       try {
         await saveArticle(article)
@@ -59,7 +55,6 @@ function NewsCard({ article, isSaved = false, onSave, onDelete }) {
           onSave(article)
         }
       } catch (error) {
-        console.error('Failed to save article:', error)
       } finally {
         setIsSaving(false)
       }

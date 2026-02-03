@@ -31,9 +31,9 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister }) {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      // Form is valid - will be handled in later stages
-      console.log('Login form submitted:', { email, password })
-      // onClose()
+      setEmail('')
+      setPassword('')
+      setErrors({})
     }
   }
 

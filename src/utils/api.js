@@ -195,7 +195,6 @@ export default {
   getSavedArticleByUrl
 }
   } catch (error) {
-    console.error('Error searching everything:', error)
     throw error
   }
 }

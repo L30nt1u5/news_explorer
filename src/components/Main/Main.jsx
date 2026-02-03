@@ -23,7 +23,6 @@ function Main() {
     try {
       const data = await searchNews(keyword)
       
-      // Transform News API response to match our article format
       const transformedArticles = data.articles.map((article, index) => ({
         id: `${article.publishedAt}-${index}`,
         title: article.title,
@@ -41,9 +40,6 @@ function Main() {
       
       setArticles(transformedArticles)
     } catch (error) {
-      console.error('Search error:', error)
-      
-      // Check if it's a validation error or API error
       if (error.message === 'Please enter a keyword') {
         setSearchError(error.message)
       } else {

@@ -20,7 +20,6 @@ function SavedNews() {
       setSavedArticles(articles)
     } catch (err) {
       setError('Failed to load saved articles')
-      console.error(err)
     } finally {
       setIsLoading(false)
     }
@@ -33,11 +32,9 @@ function SavedNews() {
         (article) => article._id !== articleToDelete._id
       ))
     } catch (err) {
-      console.error('Failed to delete article:', err)
     }
   }
 
-  // Get unique keywords from saved articles
   const keywords = [...new Set(savedArticles.map(article => article.keyword).filter(Boolean))]
 
   if (isLoading) {
