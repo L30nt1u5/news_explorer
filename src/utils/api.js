@@ -194,9 +194,3 @@ export default {
   isArticleSaved,
   getSavedArticleByUrl
 }
-  } catch (error) {
-    throw error
-  }
-}
-
-export default api
