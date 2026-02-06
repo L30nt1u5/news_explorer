@@ -43,11 +43,13 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header onLoginClick={handleOpenLoginModal} />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/saved-news" element={<SavedNews />} />
-        </Routes>
-        <About />
+        <main>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/saved-news" element={<SavedNews />} />
+          </Routes>
+          <About />
+        </main>
         <Footer />
 
         <LoginModal

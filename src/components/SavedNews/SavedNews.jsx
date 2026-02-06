@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import NewsCard from '../NewsCard/NewsCard'
 import { getSavedArticles, deleteArticle } from '../../utils/api'
 import './SavedNews.css'
@@ -8,11 +8,7 @@ function SavedNews() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    loadSavedArticles()
-  }, [])
-
-  const loadSavedArticles = async () => {
+  const loadSavedArticles = useCallback(async () => {
     setIsLoading(true)
     setError(null)
     try {
@@ -23,7 +19,11 @@ function SavedNews() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    loadSavedArticles()
+  }, [loadSavedArticles])
 
   const handleDeleteArticle = async (articleToDelete) => {
     try {
