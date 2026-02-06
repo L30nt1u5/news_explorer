@@ -1,0 +1,35 @@
+@import './vendor/fonts.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1a1b22;
+  background-color: #f5f6f7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+
+button {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
